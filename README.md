@@ -10,7 +10,7 @@
 
 ## Introduction
 
-So you pumped up about Node? But before we can go any further, we need to install it on our system. 
+Hopefully you're excited about Node by now. But before we can go any further, we need to install it on our system. 
 
 There are a few ways to install Node and npm. Our recommendation is to use one-click installer. Sometimes you might work on projects which require different versions of Node and/or npm. We'll cover how to switch between them too. In this case use `n`, `nave` or `nvm`. 
 
@@ -27,9 +27,9 @@ For the very advanced developers, there are a few recipes like installing from t
 
 ## One-Click Installers (Recommended)
 
-First, let's go to the <http://nodejs.org> and download a one-click installer for your Operation System. Choose version 5.1.0. The differences between stable and long-term support (LTS) is that LTS is for enterprises.
+First, let's go to <http://nodejs.org> and download a one-click installer for your Operation System. Choose version 5.1.0. The differences between stable and long-term support (LTS) is that LTS is for enterprises.
 
-Don't choose binaries or source code unless you know what to do with them or your OS is not present (i.e., not Windows or Mac). The installers come with Node Package Manager (npm or NPM) — important tool for dependencies manages. No need to install npm separately, but you might want to downgrade to v2.14.15 because v3.x is slower.
+Don't choose binaries or source code unless you know what to do with them or your OS is not present (i.e., not Windows or Mac). The installers come with Node Package Manager (npm or NPM) — important tool for managing dependencies. No need to install npm separately, but you might want to downgrade to v2.14.15 because v3.x is slower.
 
 Note: for older Mac OS X machines, you can pick 32-bit versions.
 
@@ -219,7 +219,8 @@ Cloning original Node repo from Joyent (alternatively, someone can fork it and c
 
 Making the build:
 
-``make instalcd ..
+```
+make instalcd ..
 ```
 
 Repeat for NPM:
@@ -238,7 +239,7 @@ make link
 
 ## Summary
 
-We know that there are a lot of recipes to install Node and npm in this lesson. The purpose is to give you reference when you need them. Here's how you can navigate and pick the best option for you right now (they might change as your needs and skills evolve):
+We just covered a lot of ways to install Node and npm. Use this lesson as a reference when you need it. But below is a qucik checklist that can help you figure out the best option for you right now (this might change as your needs and skills evolve):
 
 1. Are you an advanced programmer familiar with C/C++ who plans to read Node code and contribute to the core (Node itself)? If yes, then use GitHub, and compile the code yourself. If not, then go to step 2.
 2. Do you plan to work on projects which require drastically different versions of Node (for example 0.12 and 5.3)? If yes, then use n/nave/nvm. If not, then go to step 3.
