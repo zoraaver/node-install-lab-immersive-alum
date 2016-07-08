@@ -19,9 +19,9 @@ For the very advanced developers, there are a few recipes like installing from t
 
 ## Instructions
 
-1. Install Node v5.1.0 with one of the methods listed below
-2. Install npm v2.14.15 (typically comes with Node so you rarely if ever need to install it separately)
-3. Check versions 5.1.0 and 2.14.15 for Node and npm respectively
+1. Install Node with one of the methods listed below
+2. Install npm
+3. Check that you have the latest versions of Node and npm
 4. Install testing dependencies with `npm install`
 5. Run tests to check for versions with `npm test`
 
@@ -37,14 +37,6 @@ If there's no installer for your OS, you can get source code and compile it your
 
 Note: If you need to downgrade or upgrade Node, you can use one-click installer for that version. However, if you do it often enough (maybe you have 2 projects which require different versions) n/nave/nvm is a better option (covered below).
 
-## Installing npm
-
-npm comes with Node, but if you need to change the version (we recommend 2.14.15 for this course, because versions 3+ are slower than 2.x), then use npm to update/degrade npm. For example, if you have version 3.x, you can downgrade to 2.14.15 with:
-
-```
-npm install --global npm@2.14.15
-```
-
 
 ## Checking the Installation
 
@@ -55,7 +47,7 @@ node -v
 npm -v
 ```
 
-You should see the 5.1.0 and 2.14.15 versions of Node and NPM that you've just downloaded and installed. Alternatively, run the tests for this lessons with ` npm test`.
+As of this writing (8 July 2016), you should have Node.js v6.3.0 and npm v3.10.x ("x" will be a number but it seems like it'll change imminently). Alternatively, run the tests for this lessons with `npm test`.
 
 
 ## Installing with HomeBrew
@@ -64,9 +56,9 @@ If you already have HomeBrew (`brew`) installed, straightforwardly run:
 
 ```
 brew install node
-brew install npm
 ```
 
+This command will install the latest brewed versions of both Node.js and npm.
 
 ## Multi-version Setup with Nave
 
@@ -147,103 +139,6 @@ Alternatives to Nave and NVM include:
 * [n](https://github.com/visionmedia/n)
 
 
-## Installing from a Tar file (Advanced)
-
-If one-click installers are not working for you or your system, the sure-proof option is to install from a tar file and compile Node. Also, this option is useful when you plan to contribute to Node. Instead of a tar file, you can get the source code from GitHub (skip to the GitHub repository section below). Often times the GitHub will have the latest versions not yet available in one-click installers (like nightly builds which are not as stable as releases).
-
-First, set up a folder for the latest Node:
-
-```bash
-echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc
-. ~/.bashrc
-mkdir ~/local
-mkdir ~/node-latest-install
-cd ~/node-latest-install
-```
-
-Note: advanced users who chose to make their own builds need to have certain compilers installed first. For more information, refer to [the official documentation](https://github.com/joyent/node/wiki/Installation).
-
-Download the tar file with CURL, and unpack it:
-
-```
-curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
-./configure --prefix=~/local
-```
-
-Now, build Node and install it:
-
-```
-make install
-curl https://npmjs.org/install.sh | sh
-```
-
-More recipes for advanced users like this are at [a 30 second installation](https://gist.github.com/isaacs/579814)) by Isaac Z. Schlueter.
-
-If you find your self getting errors trying to install module globally via NPM (`npm install -g <packagename>`), re-installing Node and NPM with the solution above should eliminate the need for using `sudo` with the installation command.
-
-## Installing Without sudo (Advanced)
-
-Sometimes depending on your configuration, NPM will ask users for `sudo` — root user permissions. This will happen when trying to install module globally via NPM (`npm install --global <packagename>`). To avoid using `sudo`, advanced developers can use:
-
-```
-sudo mkdir -p /usr/local/{share/man,bin,lib/node,include/node}
-sudo chown -R $USER /usr/local/{share/man,bin,lib/node,include/node}
-```
-
-Note: please be sure and be comfortable with what `chown` command does before running it.
-
-And then proceed to a normal installation of Node v5.1.0:
-
-```
-mkdir node-install
-curl https://nodejs.org/dist/v5.1.0/node-v5.1.0.tar.gz | tar -xzf - -C node-install
-cd node-install/*
-./configure
-make install
-curl https://npmjs.org/install.sh | sh
-```
-
-## Installing From a Git Repo (Advanced)
-
-In case someone want to use the latest core Node code, and maybe even contribute to the Node and NPM projects, it's possible to build the installation from the cloned Git repo.
-
-Making folders and adding path:
-
-mkdir ~/loecho 'export PATH=$HOME/local/bin:$PATH' >> ~/.bas. ~/.bashrc
-```
-
-Cloning original Node repo from Joyent (alternatively, someone can fork it and clone his/her own repository):
-
-``git clone git://github.com/joyent/node.gicd nod./configure --prefix=~/local
-```
-
-Making the build:
-
-```
-make instalcd ..
-```
-
-Repeat for NPM:
-
-```
-git clone git://github.com/isaacs/npm.git
-cd npm
-make install
-```
-
-For more cutting-edge NPM version:
-
-```
-make link
-```
-
-## Summary
-
-We just covered a lot of ways to install Node and npm. Use this lesson as a reference when you need it. But below is a qucik checklist that can help you figure out the best option for you right now (this might change as your needs and skills evolve):
-
-1. Are you an advanced programmer familiar with C/C++ who plans to read Node code and contribute to the core (Node itself)? If yes, then use GitHub, and compile the code yourself. If not, then go to step 2.
-2. Do you plan to work on projects which require drastically different versions of Node (for example 0.12 and 5.3)? If yes, then use n/nave/nvm. If not, then go to step 3.
-4. Do you have a one-click installer for your OS (Windows, or Mac)? If yes, then use one-click installer. If not you are advanced enough user of Unix-like system to compile from the source code in the tar package.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/node-install-lab' title='node-install-lab'>node-install-lab</a> on Learn.co and start learning to code for free.</p>
 
