@@ -25,18 +25,20 @@ For the very advanced developers, there are a few recipes like installing from t
 4. Install testing dependencies with `npm install`
 5. Run tests to check for versions with `npm test`
 
-## One-Click Installers (Recommended)
 
-First, let's go to <http://nodejs.org> and download a one-click installer for your Operation System. Choose version 5.1.0. The differences between stable and long-term support (LTS) is that LTS is for enterprises.
+## Installing with Homebrew
 
-Don't choose binaries or source code unless you know what to do with them or your OS is not present (i.e., not Windows or Mac). The installers come with Node Package Manager (npm or NPM) — important tool for managing dependencies. No need to install npm separately, but you might want to downgrade to v2.14.15 because v3.x is slower.
+If you already have Homebrew (`brew`) installed, straightforwardly run:
 
-Note: for older Mac OS X machines, you can pick 32-bit versions.
+```
+brew install node
+```
 
-If there's no installer for your OS, you can get source code and compile it yourself (look for the installing from a tar file section in this file). The One-Click installer options will work for most of developers. If you need other installation recipes, proceed with this text. Otherwise, run `npm test` to test the versions. You will see pass or not.
+This command will install the latest brewed versions of both Node.js and npm.
 
-Note: If you need to downgrade or upgrade Node, you can use one-click installer for that version. However, if you do it often enough (maybe you have 2 projects which require different versions) n/nave/nvm is a better option (covered below).
+## Installing with apt/yum/etc.
 
+Installing Node.js with the package manager of your choice should look essentially like the above installation with Homebrew. Note that on Debian-based systems, you'll need to `sudo apt-get install node.js`, because a `node` package other than Node.js already exists in apt.
 
 ## Checking the Installation
 
@@ -49,96 +51,25 @@ npm -v
 
 As of this writing (8 July 2016), you should have Node.js v6.3.0 and npm v3.10.x ("x" will be a number but it seems like it'll change imminently). Alternatively, run the tests for this lessons with `npm test`.
 
+## Changing versions
 
-## Installing with HomeBrew
+As you work with different Node.js projects, you'll find that you need to change versions from time to time. There are many version managers available for Node.js, such as [nvm](https://github.com/creationix/nvm), or even virtual environment managers like [nave](https://github.com/isaacs/nave).
 
-If you already have HomeBrew (`brew`) installed, straightforwardly run:
-
-```
-brew install node
-```
-
-This command will install the latest brewed versions of both Node.js and npm.
-
-## Multi-version Setup with Nave
-
-If you plan to run multiple versions of Node to be able to quickly switch between them, you should use [nave](https://github.com/isaacs/nave) which is a virtual environment for Node.
-
-Make a folder:
-
-```bash
-mkdir ~/.nave
-cd ~/.nave
-```
-
-Downloading Nave and setting the link to PATH'ed folder:
+We prefer to use [n](https://github.com/visionmedia/n). To get started, simply run
 
 ```
-wget http://github.com/isaacs/nave/raw/master/nave.sh
-sudo ln -s $PWD/nave.sh /usr/local/bin/nave
+npm install -g n
 ```
 
-This is an example of switching to Node version 5.1.0 in a virtual environment with Nave:
+This installs `n` globally on your system.
+
+With `n` installed, switching to a new version is as simple as running
 
 ```
-nave use 5.1.0
+n 6.2.0
 ```
 
-To use NPM in this particular virtual environment, someone needs to use:
-
-```
-curl https://npmjs.org/install.sh | sh
-```
-
-After which it's possible to install something via NPM:
-
-```
-npm install express
-```
-
-And exit virtual environment with:
-
-```
-exit
-```
-
-More approaches to install Node and NPM in [gist](https://gist.github.com/isaacs/579814).
-
-
-## Multi-version Setup with NVM
-
-Another options to Nave is NVM — Node Version Manager ([GitHub](https://github.com/creationix/nvm)). You can install NVM with:
-
-```
-curl https://raw.github.com/creationix/nvm/master/install.sh | sh
-```
-
-or
-
-```
-wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
-```
-
-And after that, harness NVM's `install` to install version 5.1.0 of Node:
-
-```
-nvm install 5.1.0
-```
-
-To switch that 5.1 version of node, simply apply the `use` command, e.g.,
-
-```
-nvm use 5.1.0
-```
-
-## Alternative Multi-Version Systems
-
-Alternatives to Nave and NVM include:
-
-* [neco](https://github.com/kuno/neco)
-* [n](https://github.com/visionmedia/n)
-
-
+Where "6.2.0" could be any version that you need. Use `n --help` to explore your options and learn how to use it!
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/node-install-lab' title='node-install-lab'>node-install-lab</a> on Learn.co and start learning to code for free.</p>
 
